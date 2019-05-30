@@ -5,13 +5,10 @@ function Haiku (poem)
 
 Haiku.prototype.checkHaiku = function()
 {
+  var checkSyllable = this.countSyllable()  ;
+  console.log(checkSyllable[0], checkSyllable[1], checkSyllable[2]);
   var newPoem = this.poem.split('/n');
-  var line1 = this.countSyllable(newPoem[0]);
-  var line2 = this.countSyllable(newPoem[1]);
-  var line3 = this.countSyllable(newPoem[2]);
-  console.log(line1, line2,  line3);
-
-  if(newPoem.length === 3 && line1 === 5 && line2 === 7 && line3 === 5)
+  if(newPoem.length === 3 && checkSyllable[0] === 5 && checkSyllable[1] === 7 && checkSyllable[2] === 5)
   {
     return true;
   }
@@ -20,15 +17,32 @@ Haiku.prototype.checkHaiku = function()
 }
 
 
-Haiku.prototype.countSyllable = function(line)
+Haiku.prototype.countSyllable = function()
 {
-  var res = 0;
-  for (var i=0; i < line.length; i++)
+  var count=0;
+  var res = [];
+  var lines = this.poem.split('/n'); /// array of lines ['hop on logs', '...'];
+  for (var i=0; i < lines.length; i++)
   {
-    if (line[i]==='a' || line[i]==='u' || line[i]==='i' || line[i]==='e' || line[i]==='o')
+    var line = lines[i]; // Each line in array of lines
+    var words = line.split(" "); /// array of words in line ["hop", "word", "word"];
+    for(var j=0; j<words.length; j++)
     {
-      res += 1
+      var word = words[j];//word in the current array of words in the current line
+      for (var z = 0; z< word.length; z++) //word[z] each letter in the current word in the current line
+      {
+        if (word[z] ==='i')
+        {
+          count ++;
+        }
+        if (word[z] === 'e' && z !== word.length - 1 )
+        {
+         count ++;
+        }
+      }
     }
+    res.push(count);
+    count = 0;
   }
   return res;
 }
