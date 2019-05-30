@@ -15,7 +15,10 @@ Haiku.prototype.checkHaiku = function()
 }
 
 
-Haiku.prototype.couy
+Haiku.prototype.countSyllable = function()
+{
+  
+}
 
 
 exports.haikuModule = Haiku;
