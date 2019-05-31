@@ -39,4 +39,4 @@ Copyright (c) 2019 **_Mariia Stashuk_ & _Sabrina Mianne_ **
 
 ## 💬 Contributing
 
-* [Sabrina](https://github.com/sabrinamianne)
+* [Mariia](https://github.com/Marrri4ka)
